@@ -54,6 +54,8 @@ npm run preview
    # 推送代码
    git push -u origin main
    ```
+   
+   **当前仓库**: `https://github.com/baaxl9vh/h53d-demo.git`
 
 3. **启用GitHub Pages**
    - 进入仓库的 Settings > Pages
@@ -62,7 +64,7 @@ npm run preview
 
 4. **访问网站**
    - 部署完成后，网站将在以下地址可用：
-   - `https://YOUR_USERNAME.github.io/h53d-demo/`
+   - `https://baaxl9vh.github.io/h53d-demo/`
 
 ## 项目结构
 
