@@ -12,6 +12,7 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
+  base: '/h53d-demo/', // GitHub Pages 部署路径
   server: {
     host: '0.0.0.0', // 监听所有网络地址
     port: 5173, // 端口号
