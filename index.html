@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.ico">
+
+  <!-- 移动端视口设置 -->
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+  <!-- iOS 优化 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- Android 优化 -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#0a0e27">
+
+  <!-- SEO -->
+  <meta name="description" content="粒子交互原型 - H5移动端粒子效果演示">
+  <meta name="keywords" content="粒子效果,Three.js,WebGL,移动端H5">
+
+  <title>粒子交互原型 - Particle Demo</title>
+
+  <style>
+    /* 全局样式重置 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
+      /* 允许垂直滚动 */
+      overscroll-behavior: none;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    #app {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    /* 滚动内容样式 */
+    .scroll-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 400vh;
+      /* 4倍视口高度 */
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .scroll-section {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .scroll-text {
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 1.5rem;
+      text-align: center;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+    }
+
+    /* 加载动画 */
+    .loading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1a2e 50%, #16213e 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 3px solid rgba(102, 126, 234, 0.3);
+      border-top-color: #667eea;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 加载指示器 -->
+  <div class="loading" id="loading">
+    <div class="loading-spinner"></div>
+  </div>
+
+  <div id="app"></div>
+
+  <!-- 滚动内容区域 -->
+  <div class="scroll-content">
+    <div class="scroll-section">
+      <div class="scroll-text">向下滚动查看模型切换</div>
+    </div>
+    <div class="scroll-section">
+      <div class="scroll-text">模型1 → 模型2</div>
+    </div>
+    <div class="scroll-section">
+      <div class="scroll-text">继续滚动</div>
+    </div>
+    <div class="scroll-section">
+      <div class="scroll-text">模型切换完成</div>
+    </div>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+
+  <script>
+    // 页面加载完成后隐藏加载动画
+    window.addEventListener('load', () => {
+      const loading = document.getElementById('loading');
+      if (loading) {
+        setTimeout(() => {
+          loading.style.opacity = '0';
+          loading.style.transition = 'opacity 0.3s';
+          setTimeout(() => loading.remove(), 300);
+        }, 500);
+      }
+    });
+
+    // 移除阻止滚动的代码，让ScrollTrigger正常工作
+  </script>
+</body>
+
+</html>
